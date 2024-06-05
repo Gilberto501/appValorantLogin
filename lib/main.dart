@@ -1,12 +1,20 @@
+import 'package:appvalorantfinal/firebase_options.dart';
 import 'package:appvalorantfinal/models/character_mode.dart';
 import 'package:appvalorantfinal/providers/api_provider.dart';
 import 'package:appvalorantfinal/screens/character_screen.dart';
 import 'package:appvalorantfinal/screens/home_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}
 
 final GoRouter _router = GoRouter(routes: [
   GoRoute(
